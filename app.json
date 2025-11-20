@@ -1,5 +1,6 @@
 {
   "expo": {
+    "scheme": "wordsplay",
     "name": "React_Native_Words_Play",
     "slug": "React_Native_Words_Play",
     "version": "1.0.0",
@@ -24,6 +25,9 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
 }
