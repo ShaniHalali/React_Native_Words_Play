@@ -11,6 +11,8 @@ import ThemedButton from '../../components/ThemedButton'
 import ThemedLogo from '../../components/ThemedLogo'
 import Segment from '../../components/Segment'
 import DropDown from '../../components/DropDown'
+import DifficultySelector from '../../components/DifficultySelector'
+import LanguagesDropDown from '../../components/LanguagesDropDown'
 
 const fontFamilyPlatform =  Platform.OS === "ios" ? "ChalkboardSE-Regular" : "sans-serif-medium";
 
@@ -76,33 +78,18 @@ useEffect(() => {
          />
 
     {/*Languages */}
-    <ThemedText  style={[styles.title, {color: "#f7a930", fontSize: 25, alignSelf: "flex-start", marginLeft: 35}]}> Learning Language:</ThemedText>
-    <DropDown
-      style={[styles.inputs, {marginTop: 10}]}
-      data={languages}
-      placeholder="Choose language"
-      onChange={(item) => setSelectedLanguage(item)}
-    />
+    <LanguagesDropDown
+    onChange={setLanguages}
+    >
+    </LanguagesDropDown>
 
     {/*Difficulty */}
-    <ThemedText  style={[styles.title, {color: "#f7a930", fontSize: 25, alignSelf: "flex-start", marginLeft: 35}]}> Difficulty:</ThemedText>
-    <View style={{ flexDirection: "row", alignSelf: "flex-start", marginLeft: 35, padding: 5 }}>
-      <Segment
-        label="Easy"
-        selected={difficulty === "Easy"}
-        onPress={() => setDifficulty("Easy")}
-      />
-      <Segment
-        label="Mid"
-        selected={difficulty === "Mid"}
-        onPress={() => setDifficulty("Mid")}
-      />
-      <Segment
-        label="Pro"
-        selected={difficulty === "Pro"}
-        onPress={() => setDifficulty("Pro")}
-      />
-    </View>
+    <DifficultySelector
+    value={difficulty}
+    onChange={setDifficulty}
+    >
+    </DifficultySelector>
+
    
     {/* Buttons*/}
       <View style={styles.buttons}>
