@@ -39,7 +39,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         fontSize: 40,
         fontFamily: fontFamilyPlatform,
-        color: "#f7a930",
         fontSize: 25, 
         alignSelf: "flex-start", 
         marginLeft: 35,

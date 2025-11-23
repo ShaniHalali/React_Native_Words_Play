@@ -4,8 +4,8 @@ export const Colors = {
   warning: "#cc475a",
   
   dark: {
-    text: "#fecb2f",
-    title: "#fff",
+    text: "#fff",
+    title: "#fecb2f",
     background: "#2b9575",
     navBackground: "#201e2b",
     iconColor: "#9591a5",

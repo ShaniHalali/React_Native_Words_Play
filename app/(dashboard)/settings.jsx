@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Platform } from 'react-native'
+import { StyleSheet, Text, View, Platform, useColorScheme } from 'react-native'
 import React, { useState } from 'react'
 import {Colors} from '../../constants/Color'
 import ThemedView from '../../components/ThemedView'
@@ -6,25 +6,32 @@ import ThemedText from '../../components/ThemeText'
 import DifficultySelector from '../../components/DifficultySelector'
 import Dropdown from '../../components/DropDown'
 import LanguagesDropDown from '../../components/LanguagesDropDown'
+import Spacer from '../../components/Spacer'
 
 const fontFamilyPlatform =  Platform.OS === "ios" ? "ChalkboardSE-Regular" : "sans-serif-medium";
 
+
 const settings = () => {
+  const colorScheme = useColorScheme()
+  const theme = Colors[colorScheme] ?? Colors.light 
   const userName = "Shani Halali";
-  const userEmail = "shani@gmail.com";
+  const userEmail = "shanihlli1234@gmail.com";
   const [difficulty, setDifficulty] = useState("Easy");
   const [languages, setLanguages] = useState([]);
 
   return (
 <ThemedView style={styles.container}>
 <ThemedText style={styles.title}>Game Settings</ThemedText>
+<Spacer/>
 
 {/*User info */}
-<View >
-  <ThemedText>Name: {userName}</ThemedText>
-  <ThemedText>Email: {userEmail}</ThemedText>
+<View style={[styles.inputs,{backgroundColor: theme.uiBackground, color: theme.text,padding: 20,}]}>
+  <ThemedText style={{fontSize: 20 , marginBottom: 10}}>Name: {userName}</ThemedText>
+  <ThemedText style={{fontSize: 20}}>Email: {userEmail}</ThemedText>
   <Text></Text>
 </View>
+
+<Spacer height={20}/>
 
 {/*Language*/}
     <LanguagesDropDown
@@ -32,6 +39,7 @@ const settings = () => {
     >
     </LanguagesDropDown>
 
+<Spacer height={20}/>
 
 {/*Difficulty */}
     <DifficultySelector
@@ -79,4 +87,13 @@ const styles = StyleSheet.create({
             height: 200,
             resizeMode: 'contain',
         },
+     inputs: {
+        width: '80%',
+        height: '15%',
+        marginBottom: 5,
+        alignSelf: "center",
+        borderRadius: 6,
+        fontFamily: fontFamilyPlatform,
+
+  },
 })

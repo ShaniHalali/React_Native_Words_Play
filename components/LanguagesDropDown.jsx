@@ -22,7 +22,7 @@ const LanguagesDropDown = ({ value, onChange, style }) => {
         data={aiLanguages}
         placeholder="Choose language"
         onChange={onChange}
-        value={value}       // ← הוספנו את זה
+        value={value}    
       />
     </>
   );
@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 25,
     fontFamily: fontFamilyPlatform,
-    color: "#f7a930",
     alignSelf: "flex-start",
     marginLeft: 35,
   },
@@ -43,5 +42,6 @@ const styles = StyleSheet.create({
     width: '80%',
     marginBottom: 5,
     alignSelf: "center",
+    color: "#fff",
   },
 });

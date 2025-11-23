@@ -79,12 +79,14 @@ useEffect(() => {
 
     {/*Languages */}
     <LanguagesDropDown
+    style={{color: "#f7a930",}}
     onChange={setLanguages}
     >
     </LanguagesDropDown>
 
     {/*Difficulty */}
     <DifficultySelector
+    style={{color: "#f7a930",}}
     value={difficulty}
     onChange={setDifficulty}
     >
@@ -95,7 +97,6 @@ useEffect(() => {
       <View style={styles.buttons}>
 
        <ThemedButton
-      
        title="Sign Up"
       >
       <Text>Sign Up</Text>
