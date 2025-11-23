@@ -110,7 +110,6 @@ useEffect(() => {
        <ThemedButton
       
        title="Sign Up"
-       color= "#3bcf5e"
       >
       <Text>Sign Up</Text>
       </ThemedButton>
@@ -118,6 +117,8 @@ useEffect(() => {
       <ThemedButton
        onPress={onPressLogIn}
        title="Log In"
+       color= "#3bcf5e"
+
       >
       <Text>Log In</Text>
       </ThemedButton>
