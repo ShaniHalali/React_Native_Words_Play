@@ -11,6 +11,7 @@ export const Colors = {
     iconColor: "#9591a5",
     iconColorFocused: "#fff",
     uiBackground: "#2f2b3d",
+    cardBackground: "#043855",
   },
   light: {
     text: "#201e2b",
@@ -22,6 +23,6 @@ export const Colors = {
     uiBackground: "#fff",
     //Button: "#40c85a",
     // yellow #fbd05b
-    card: "",
+    cardBackground: "#fff1c4",
   },
 }

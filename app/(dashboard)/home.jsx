@@ -7,6 +7,7 @@ import ThemedView from '../../components/ThemedView'
 import ThemedText from '../../components/ThemeText'
 import Spacer from '../../components/Spacer'
 import ThemedButton from '../../components/ThemedButton'
+import { router } from 'expo-router'
 
 const fontFamilyPlatform =  Platform.OS === "ios" ? "ChalkboardSE-Regular" : "sans-serif-medium";
 
@@ -14,6 +15,10 @@ const fontFamilyPlatform =  Platform.OS === "ios" ? "ChalkboardSE-Regular" : "sa
 const home = () => {
     const userScore = 0;
     const userLanguage = "English";
+
+    const onPressLogIn = () => {
+        router.push("/game")
+    }
 
   return (
     <ThemedView style={styles.container}>
@@ -25,7 +30,7 @@ const home = () => {
         <Spacer/>
 
      <ThemedButton
-       //onPress={onPressLogIn}
+       onPress={onPressLogIn}
        title="start"
        color= "#3bcf5e"
       >

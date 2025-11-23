@@ -145,14 +145,16 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         marginHorizontal: 10,
   },
-  buttons: {
-    alignSelf: 'center',
-    flexDirection: 'row',
-    gap: 80,
-    alignItems: 'center',
-  },
-  inputs: {
-    width: '80%',
-    marginBottom: 5,
-  },
-})
+      buttons: {
+        alignSelf: 'center',
+        flexDirection: 'row',
+        justifyContent: "space-between",
+        paddingHorizontal: 20,
+        width: "70%",
+        alignItems: 'center',
+      },
+      inputs: {
+        width: '80%',
+        marginBottom: 5,
+      },
+    })
