@@ -1,10 +1,11 @@
 import { StyleSheet,useColorScheme, Image, style } from 'react-native'
 import LightLogo from '../assets/image/childrenAuth_light.png'
 import DarkLogo from '../assets/image/childrenAuth_dark.png'
+import logo from '../assets/image/childrenAuth.png'
 
 const ThemedLogo = ({style: customStyle }) => {
     const colorScheme = useColorScheme()
-    const logo = colorScheme === 'dark' ? DarkLogo : LightLogo
+    //const logo = colorScheme === 'dark' ? DarkLogo : LightLogo
 
   return (
   <Image source = {logo} style={[styles.logo, customStyle ]}/>

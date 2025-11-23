@@ -22,6 +22,11 @@ const Login = () => {
     router.push("/signup")
   }
 
+  const onPressLogIn = () => {
+    //no auth for now
+    router.push("/home")
+  }
+
   return (
      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
      <ThemedView style={[styles.container ]}>
@@ -50,7 +55,7 @@ const Login = () => {
     {/* Buttons*/}
       <View style={styles.buttons}>
       <ThemedButton
-       
+       onPress={onPressLogIn}
        title="Log In"
       >
       <Text>Log In</Text>
