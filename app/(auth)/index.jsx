@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,TouchableWithoutFeedback,Keyboard } from 'react-native'
+import { StyleSheet, Text, View,TouchableWithoutFeedback,Keyboard, Platform } from 'react-native'
 import React, { useState } from 'react'
 import {Colors} from '../../constants/Color'
 import {useRouter} from "expo-router"
@@ -9,6 +9,8 @@ import ThemedText from '../../components/ThemeText'
 import ThemeTextInput from '../../components/ThemeTextInput'
 import ThemedButton from '../../components/ThemedButton'
 import ThemedLogo from '../../components/ThemedLogo'
+
+const fontFamilyPlatform =  Platform.OS === "ios" ? "ChalkboardSE-Regular" : "sans-serif-medium";
 
 
 const Login = () => {
@@ -22,8 +24,8 @@ const Login = () => {
 
   return (
      <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
-     <ThemedView style={[styles.container,{backgroundColor: "#60c9f8"} ]}>
-      <ThemedLogo />
+     <ThemedView style={[styles.container ]}>
+      <ThemedLogo style={{height: 200}} />
       <ThemedText title={true} style={[styles.title, {color: "#f7a930"}]}> Log In</ThemedText>
       <Spacer />
 
@@ -77,11 +79,12 @@ const styles = StyleSheet.create({
       container: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'flex-start',
+        justifyContent: 'flex-cent',
     },
     title: {
         fontWeight: 'bold',
         fontSize: 50,
+        fontFamily: fontFamilyPlatform,
         
     },
     error: {
