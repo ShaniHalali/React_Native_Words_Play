@@ -13,7 +13,7 @@ import Segment from '../../components/Segment'
 import DropDown from '../../components/DropDown'
 import DifficultySelector from '../../components/DifficultySelector'
 import LanguagesDropDown from '../../components/LanguagesDropDown'
-
+import { registerUser } from '../../services/authService'
 const fontFamilyPlatform =  Platform.OS === "ios" ? "ChalkboardSE-Regular" : "sans-serif-medium";
 
 const signup = () => {
@@ -22,13 +22,47 @@ const signup = () => {
   const [name, setName] = useState("")
   const [difficulty, setDifficulty] = useState("Easy");
   const [languages, setLanguages] = useState([]);
-  const [selectedLanguage, setSelectedLanguage] = useState(null)
 
   const router = useRouter();
 
   const onPressLogIn= () => {
     router.push("/")
   }
+
+  const handleSignUp = async () => {
+  // validate empty fields
+  if (!email || !password || !name || languages.length === 0) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  // validate email format
+  const emailRegex = /\S+@\S+\.\S+/;
+  if (!emailRegex.test(email)) {
+    alert("Please enter a valid email");
+    return;
+  }
+
+  // validate password length
+  if (password.length < 6) {
+    alert("Password must be at least 6 characters");
+    return;
+  }
+
+  try {
+    // create user using Firebase
+    const userCredential = await registerUser(email, password);
+
+    // you can save name or difficulty or languages in Firestore later
+    console.log("User created:", userCredential.user.uid);
+
+    // go to home or login page
+    router.replace("/home");
+  } catch (error) {
+    console.log(error.message);
+    alert(error.message);
+  }
+};
 
 useEffect(() => {
   const aiLanguages = [
@@ -97,6 +131,7 @@ useEffect(() => {
       <View style={styles.buttons}>
 
        <ThemedButton
+       onPress={handleSignUp}
        title="Sign Up"
       >
       <Text>Sign Up</Text>

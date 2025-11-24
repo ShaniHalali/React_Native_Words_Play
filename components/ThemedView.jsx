@@ -19,7 +19,7 @@ import DarkGameBack from '../assets/image/back_game_dark.png'
 
 const ThemedView = ({mode, style, children, ...props }) => {
   const colorScheme = useColorScheme()
-  console.log("Theme color = " + colorScheme)
+  //console.log("Theme color = " + colorScheme)
   const theme = Colors[colorScheme] ?? Colors.light
   const background =  backgrounds[mode === "game" ? "game" : "normal"][colorScheme];
 
