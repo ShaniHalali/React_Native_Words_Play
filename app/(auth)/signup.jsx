@@ -105,6 +105,7 @@ useEffect(() => {
         keyboardType= "email-address"
         onChangeText= {setEmail}
         value= {email}
+        autoCapitalize="none"
          />
 
       <ThemedText  style={[styles.title, {color: "#f7a930", fontSize: 25, alignSelf: "flex-start", marginLeft: 35}]}> Name:</ThemedText>

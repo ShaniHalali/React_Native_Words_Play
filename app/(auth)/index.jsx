@@ -59,6 +59,8 @@ const Login = () => {
         keyboardType= "email-address"
         onChangeText= {setEmail}
         value= {email}
+        autoCapitalize="none"
+
          />
 
         <ThemeTextInput
@@ -67,6 +69,7 @@ const Login = () => {
         keyboardType= "password"
         onChangeText= {setPassword}
         value= {password}
+        secureTextEntry={true}
          />
      
 
