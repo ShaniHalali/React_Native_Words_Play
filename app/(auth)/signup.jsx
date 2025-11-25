@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,TouchableWithoutFeedback, Keyboard, Platform  } from 'react-native'
+import { StyleSheet, Text, View,TouchableWithoutFeedback, Keyboard, Platform, Alert  } from 'react-native'
 import React, { useState, useEffect  } from 'react'
 import {Colors} from '../../constants/Color'
 import {useRouter} from "expo-router"
@@ -29,25 +29,31 @@ const signup = () => {
     router.push("/")
   }
 
-  const handleSignUp = async () => {
-  // validate empty fields
+  const onPressSignup = () => {
+      // validate empty fields
   if (!email || !password || !name || languages.length === 0) {
-    alert("Please fill all fields");
+    Alert.alert("Please fill all fields");
     return;
-  }
+  } 
 
   // validate email format
   const emailRegex = /\S+@\S+\.\S+/;
-  if (!emailRegex.test(email)) {
-    alert("Please enter a valid email");
+   if (!emailRegex.test(email)) {
+    Alert.alert("Invalid Email","Please enter a valid email");
     return;
   }
 
   // validate password length
   if (password.length < 6) {
-    alert("Password must be at least 6 characters");
+    Alert.alert("Weak Password","Password must be at least 6 characters");
     return;
   }
+
+  handleSignUp();
+
+  }
+
+  const handleSignUp = async () => {
 
   try {
     // create user using Firebase
@@ -60,7 +66,15 @@ const signup = () => {
     router.replace("/home");
   } catch (error) {
     console.log(error.message);
-    alert(error.message);
+    if (error.code === "auth/email-already-in-use") {
+      Alert.alert(
+        "Email Already Registered",
+        "There is already an account using this email, Try logging in or use another email."
+      );
+    } else {
+      alert(error.message);
+
+    }
   }
 };
 
@@ -131,7 +145,7 @@ useEffect(() => {
       <View style={styles.buttons}>
 
        <ThemedButton
-       onPress={handleSignUp}
+       onPress={onPressSignup}
        title="Sign Up"
       >
       <Text>Sign Up</Text>
@@ -143,7 +157,7 @@ useEffect(() => {
        color= "#3bcf5e"
 
       >
-      <Text>Log In</Text>
+      <Text>Alredy have an account</Text>
       </ThemedButton>
 
       </View>
@@ -184,8 +198,8 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         flexDirection: 'row',
         justifyContent: "space-between",
-        paddingHorizontal: 20,
-        width: "70%",
+        paddingHorizontal: 0,
+        width: "80%",
         alignItems: 'center',
       },
       inputs: {
