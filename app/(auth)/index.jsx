@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View,TouchableWithoutFeedback,Keyboard, Platform } from 'react-native'
+import { StyleSheet, Text, View,TouchableWithoutFeedback,Keyboard, Platform, Alert } from 'react-native'
 import React, { useState } from 'react'
 import {Colors} from '../../constants/Color'
 import {useRouter} from "expo-router"
@@ -9,6 +9,7 @@ import ThemedText from '../../components/ThemeText'
 import ThemeTextInput from '../../components/ThemeTextInput'
 import ThemedButton from '../../components/ThemedButton'
 import ThemedLogo from '../../components/ThemedLogo'
+import { loginUser } from '../../services/authService'
 
 const fontFamilyPlatform =  Platform.OS === "ios" ? "ChalkboardSE-Regular" : "sans-serif-medium";
 
@@ -23,8 +24,25 @@ const Login = () => {
   }
 
   const onPressLogIn = () => {
-    //no auth for now
-    router.push("/home")
+    //router.push("/home")
+    if( !email || !password) {
+      Alert.alert("Please fill all fields"); 
+      return; 
+    }
+
+    handleLogin();
+  }
+
+  const handleLogin = async () => {
+    try {
+      //check if user exist
+      const user = await loginUser(email,password);
+      console.log("user exist, userID = ", user.user.uid)
+      router.replace("/home")
+    } catch (error) {
+      console.log("Login error = ", error.message);
+      Alert.alert("Invalid Email or Password")
+    }
   }
 
   return (

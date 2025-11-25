@@ -62,10 +62,10 @@ const signup = () => {
     // you can save name or difficulty or languages in Firestore later
     console.log("User created:", userCredential.user.uid);
 
-    // go to home or login page
+    // go to home
     router.replace("/home");
   } catch (error) {
-    console.log(error.message);
+    console.log("Register error = ",error.message);
     if (error.code === "auth/email-already-in-use") {
       Alert.alert(
         "Email Already Registered",
