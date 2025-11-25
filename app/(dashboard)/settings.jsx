@@ -7,6 +7,7 @@ import DifficultySelector from '../../components/DifficultySelector'
 import Dropdown from '../../components/DropDown'
 import LanguagesDropDown from '../../components/LanguagesDropDown'
 import Spacer from '../../components/Spacer'
+import { auth } from '../../services/firebase'
 
 const fontFamilyPlatform =  Platform.OS === "ios" ? "ChalkboardSE-Regular" : "sans-serif-medium";
 
@@ -14,8 +15,8 @@ const fontFamilyPlatform =  Platform.OS === "ios" ? "ChalkboardSE-Regular" : "sa
 const settings = () => {
   const colorScheme = useColorScheme()
   const theme = Colors[colorScheme] ?? Colors.light 
-  const userName = "Shani Halali";
-  const userEmail = "shanihlli1234@gmail.com";
+  const userName = "Name";
+  const userEmail = auth.currentUser.email != null ? auth.currentUser.email : "" ;
   const [difficulty, setDifficulty] = useState("Easy");
   const [languages, setLanguages] = useState([]);
 

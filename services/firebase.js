@@ -3,13 +3,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC3Oi3CxYxAHYdrCu9ASRrH1_i6-m5G2-U",
-  authDomain: "words-game-react-native.firebaseapp.com",
-  projectId: "words-game-react-native",
-  storageBucket: "words-game-react-native.firebasestorage.app",
-  messagingSenderId: "1009250524004",
-  appId: "1:1009250524004:web:2ee6aab00401c1c834b871",
-  measurementId: "G-ZHCGXPMCF7"
+  apiKey: FIREBASE_API_KEY,
+  authDomain: FIREBASE_AUTH_DOMAIN,
+  projectId: FIREBASE_PROJECT_ID,
+  storageBucket: FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: FIREBASE_MESSAGING_SENDER_ID,
+  appId: FIREBASE_APP_ID,
+  measurementId: FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
